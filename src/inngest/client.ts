@@ -18,11 +18,11 @@ export type Events = {
 
 // Inngest client to send and receive events
 export const inngestMain = new Inngest({
-  id: "main-workflow",
+  id: "scan",
   schemas: new EventSchemas().fromRecord<Events>(),
 });
 
 export const inngestSecondary = new Inngest({
-  id: "main-workflow-expensive-branch",
+  id: "scan-with-headless-browser",
   schemas: new EventSchemas().fromRecord<Events>(),
 });

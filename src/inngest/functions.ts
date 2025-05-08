@@ -5,7 +5,7 @@ import { logStart } from '@/inngest/log-start';
 import { referenceFunction } from 'inngest';
 
 export const secondaryTask = inngestSecondary.createFunction(
-  { id: "secondary-task", name: "Secondary task" },
+  { id: "expensive-scan", name: "Expensive scan task" },
   { event: "workflow/secondary.step" },
   async ({ event, step }) => {
     return await expensiveStep();
@@ -13,7 +13,7 @@ export const secondaryTask = inngestSecondary.createFunction(
 );
 
 export const mainWorkflow = inngestMain.createFunction(
-  { id: "main-workflow", name: "Main Workflow" },
+  { id: "scanning-pipeline", name: "Scan pipeline" },
   { event: "workflow/main.step" },
   async ({ event, step }) => {
     await step.run('start-logging', async () => {
@@ -26,8 +26,8 @@ export const mainWorkflow = inngestMain.createFunction(
 
     await step.invoke('expensive-step', {
       function: referenceFunction({
-        appId: 'main-workflow-expensive-branch',
-        functionId: 'secondary-task'
+        appId: 'scan-with-headless-browser',
+        functionId: 'expensive-scan'
       }),
       data: {}
     });
