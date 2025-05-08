@@ -1,9 +1,9 @@
 {
   "functions": {
-    "app/api/inngest/route.ts": {
+    "src/app/api/inngest/route.ts": {
       "memory": 1769
     },
-    "app/api/inngest/secondary/route.ts": {
+    "src/app/api/inngest/secondary/route.ts": {
       "memory": 3009
     }
   }
