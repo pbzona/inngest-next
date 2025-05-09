@@ -1,6 +1,6 @@
 {
   "urls": [
-    "http://localhost:3000/api/inngest",
-    "http://localhost:3000/api/inngest/secondary"
+    "/api/inngest",
+    "/api/inngest/secondary"
   ]
 }
